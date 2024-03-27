@@ -1,6 +1,6 @@
 export declare module "@medusajs/medusa/dist/models/product-variant" {
 
-declare interface ProductVariant {
+declare interface ProductVariantType {
     name?: string;
     file_key?: string;
     mime_type?: string;
