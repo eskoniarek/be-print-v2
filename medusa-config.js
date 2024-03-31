@@ -54,6 +54,8 @@ const plugins = [
   },
   {
     resolve: `medusa-plugin-sendgrid-typescript`,
+    /** @type {import('medusa-plugin-sendgrid-typescript').PluginOptions} */
+
     options: {
       api_key: process.env.SENDGRID_API_KEY,
       from: process.env.SENDGRID_FROM,
