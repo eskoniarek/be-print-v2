@@ -71,7 +71,10 @@ class HandleOrderSubscribers {
     if (urls.length) {
       console.log(`[HandleOrderPlaced] Sending email with links for order ID: ${data.id}`);
       // Prepare items in the format required by your SendGrid template
-     
+      const itemDetails = order.items.map((item) => ({
+        quantity: item.quantity,
+        price: (item.unit_price / 100).toFixed(2), // Assuming unit_price is in cents
+      }));
       // Send an email through SendGrid
       await this.sendGridService_.sendEmail({
         templateId: "d-b8d571d61fb54edc8c61258efd2d4022",
@@ -81,7 +84,7 @@ class HandleOrderSubscribers {
           customer: {
             first_name: order.customer.first_name,
           },
-          items: order.items,
+          items: itemDetails,
           total: order.total,
           billing_address: order.billing_address,
           downloadUrl: urls, // If only one URL is expected, use urls[0]
