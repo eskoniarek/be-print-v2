@@ -46,7 +46,7 @@ const plugins = [
     resolve: "@medusajs/admin",
     /** @type {import('@medusajs/admin').PluginOptions} */
     options: {
-      autoRebuild: true,
+      autoRebuild: false,
       develop: {
         open: process.env.OPEN_BROWSER !== "false",
       },
@@ -55,7 +55,6 @@ const plugins = [
   {
     resolve: `medusa-plugin-sendgrid-typescript`,
     /** @type {import('medusa-plugin-sendgrid-typescript').PluginOptions} */
-
     options: {
       api_key: process.env.SENDGRID_API_KEY,
       from: process.env.SENDGRID_FROM,
