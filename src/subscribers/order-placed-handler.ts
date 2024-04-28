@@ -9,7 +9,6 @@ import ProductMediaService from "../services/product-media"
 export default async function handleOrderPlaced({ 
   data, eventName, container, pluginOptions, 
 }: SubscriberArgs<Record<string, string>>) {
-  const sendGridService = container.resolve("sendgridService")
   const orderService: OrderService = container.resolve(
     "orderService"
   )
@@ -20,6 +19,7 @@ export default async function handleOrderPlaced({
     container.resolve(
       "productMediaService"
     )
+  const sendgridService = container.resolve("sendgridService")
 
   const order = await orderService.retrieve(data.id, {
     relations: [
@@ -33,7 +33,7 @@ export default async function handleOrderPlaced({
   for (const item of order.items) {
     const productMedias = await productMediaService
       .retrieveMediasByVariant(item.variant)
-    if (productMedias.length) {
+    if (!productMedias.length) {
       return
     }
 
@@ -46,30 +46,23 @@ export default async function handleOrderPlaced({
             fileKey: productMedia.file_key,
             isPrivate: true,
           })
-          console.log(`Presigned URL generated for product media ${productMedia.id}: ${downloadUrl}`)
 
         urls.push(downloadUrl)
       }),
     ])
   }
   
-  if (urls.length) {
+  if (!urls.length) {
     return
   }
 
-  console.log(`Sending email for order ${order.id} with download URLs:`)
-  console.log(urls)
-
-  sendGridService.sendEmail({
+  sendgridService.sendEmail({
     templateId: "d-b8d571d61fb54edc8c61258efd2d4022",
     from: "hello@op-app.co",
     to: order.email,
     dynamic_template_data: {
-      order_number: order.id,
-      items: order.items,
-      total: order.total,
-      billing_address: order.billing_address,
-      downloadUrl: urls,    
+      // any data necessary for your template...
+      digital_download_urls: urls,
     },
   })
 }
@@ -80,3 +73,4 @@ export const config: SubscriberConfig = {
     subscriberId: "order-placed-handler",
   },
 }
+
