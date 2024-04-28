@@ -58,6 +58,18 @@ const plugins = [
         process.env.SENDGRID_CUSTOMER_PASSWORD_RESET_ID,
     },
   },
+  // {
+  //   resolve: `medusa-plugin-sendgrid-typescript`,
+  //   /** @type {import('medusa-plugin-sendgrid-typescript').PluginOptions} */
+  //   options: {
+  //     api_key: process.env.SENDGRID_API_KEY,
+  //     from: process.env.SENDGRID_FROM,
+  //     order_placed_template: 
+  //       process.env.SENDGRID_ORDER_PLACED_ID,
+  //       customer_password_reset_template: 
+  //       process.env.SENDGRID_CUSTOMER_PASSWORD_RESET_ID,
+  //   },
+  // },
   {
     resolve: `medusa-payment-stripe`,
     options: {

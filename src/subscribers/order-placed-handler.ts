@@ -31,38 +31,30 @@ export default async function handleOrderPlaced({
   // find product medias in the order
   const urls = []
   for (const item of order.items) {
-    const productMedias = await productMediaService
-      .retrieveMediasByVariant(item.variant)
-    if (!productMedias.length) {
-      return
-    }
+    const productMedias = await productMediaService.retrieveMediasByVariant(item.variant)
 
-    await Promise.all([
-      productMedias.forEach(
-        async (productMedia) => {
-        // get the download URL from the file service
-        const downloadUrl = await 
-          fileService.getPresignedDownloadUrl({
-            fileKey: productMedia.file_key,
-            isPrivate: true,
-          })
 
-        urls.push(downloadUrl)
-      }),
-    ])
-  }
   
-  if (!urls.length) {
-    return
+    
+    const downloadUrl = await Promise.all(
+      productMedias.map(async (productMedia) => {
+        // get the download URL from the file service
+        return await fileService.getPresignedDownloadUrl({
+          fileKey: productMedia.file_key,
+          isPrivate: true,
+        })
+      })
+    )
+  
+    urls.push(...downloadUrl)
   }
-
   sendgridService.sendEmail({
     templateId: "d-b8d571d61fb54edc8c61258efd2d4022",
-    from: "hello@op-app.co",
+    from: "hello@op-app.co",   
     to: order.email,
     dynamic_template_data: {
       // any data necessary for your template...
-      digital_download_urls: urls,
+      downloadUrl: urls,
     },
   })
 }
