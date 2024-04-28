@@ -37,12 +37,6 @@ const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
   {
-    resolve: `@medusajs/file-local`,
-    options: {
-      upload_dir: "uploads",
-    },
-  },
-  {
     resolve: "@medusajs/admin",
     /** @type {import('@medusajs/admin').PluginOptions} */
     options: {
@@ -53,8 +47,8 @@ const plugins = [
     },
   },
   {
-    resolve: `medusa-plugin-sendgrid-typescript`,
-    /** @type {import('medusa-plugin-sendgrid-typescript').PluginOptions} */
+    resolve: `medusa-plugin-sendgrid`,
+    /** @type {import('medusa-plugin-sendgrid').PluginOptions} */
     options: {
       api_key: process.env.SENDGRID_API_KEY,
       from: process.env.SENDGRID_FROM,
