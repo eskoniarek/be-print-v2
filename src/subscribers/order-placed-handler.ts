@@ -32,10 +32,6 @@ export default async function handleOrderPlaced({
   const urls = []
   for (const item of order.items) {
     const productMedias = await productMediaService.retrieveMediasByVariant(item.variant)
-
-
-  
-    
     const downloadUrl = await Promise.all(
       productMedias.map(async (productMedia) => {
         // get the download URL from the file service
