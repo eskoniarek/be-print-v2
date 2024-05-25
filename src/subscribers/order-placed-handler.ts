@@ -31,7 +31,8 @@ export default async function handleOrderPlaced({
   // find product medias in the order
   const urls = []
   for (const item of order.items) {
-    const productMedias = await productMediaService.retrieveMediasByVariant(item.variant)
+    const productMedias = await productMediaService
+      .retrieveMediasByVariant(item.variant)
     const downloadUrl = await Promise.all(
       productMedias.map(async (productMedia) => {
         // get the download URL from the file service
@@ -41,7 +42,7 @@ export default async function handleOrderPlaced({
         })
       })
     )
-  
+
     urls.push(...downloadUrl)
   }
   sendgridService.sendEmail({
