@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@ai-sdk/provider-utils@0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@ai-sdk/provider-utils/-/provider-utils-0.0.9.tgz#18f459e04d897162fbd0c475fc642a971b2dc193"
-  integrity sha512-bZFTVp/GIZ3Yz4VejYs0B93bmnwfk+RoSHAQxAe9WamkQFrZLuNgd2ngAFjF6b4naLynWe1ZCk+dLWEtozCciw==
+"@ai-sdk/provider-utils@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/provider-utils/-/provider-utils-0.0.13.tgz#59b054adb125f665eaa6056955ea0d1d719ef779"
+  integrity sha512-cB2dPm9flj+yin5sjBLFcXdW8sZtAXLE/OLKgz9uHpHM55s7mnwZrDGfO6ot/ukHTxDDJunZLW7qSjgK/u0F1g==
   dependencies:
-    "@ai-sdk/provider" "0.0.6"
+    "@ai-sdk/provider" "0.0.10"
     eventsource-parser "1.1.2"
     nanoid "3.3.6"
     secure-json-parse "2.7.0"
 
-"@ai-sdk/provider@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@ai-sdk/provider/-/provider-0.0.6.tgz#e72236da2f251636943a5c1bc566f0b8d66c9c88"
-  integrity sha512-kiPqIsSnUimckaUn87WepxfjPNdy8SXlPP7P6yWuG3e1NmyFHcyuH6EBBZxXLmu0oZtkb+QEeP3UDWGSc+wwKQ==
+"@ai-sdk/provider@0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/provider/-/provider-0.0.10.tgz#be84af0b4cb2dad0ebc85b1070b4f47404cfb1f1"
+  integrity sha512-NzkrtREQpHID1cTqY/C4CI30PVOaXWKYytDR2EcytmFgnP7Z6+CrGIA/YCnNhYAuUm6Nx+nGpRL/Hmyrv7NYzg==
   dependencies:
     json-schema "0.4.0"
 
@@ -6417,19 +6417,19 @@ ai@^2.2.14:
     swrv "1.0.4"
 
 ai@^3.0.13:
-  version "3.1.14"
-  resolved "https://registry.yarnpkg.com/ai/-/ai-3.1.14.tgz#81cfccb8b19b7fbd41b72e6b891697fbd7d6f5c6"
-  integrity sha512-yW9ipraLm2PzzWc74eWUUVUIVZbO/Ggv//83iBfDkOTndrBmFqyIk6DtVVzf+RwKNUYuZzj8v5MKcgnHQhceXw==
+  version "3.1.28"
+  resolved "https://registry.yarnpkg.com/ai/-/ai-3.1.28.tgz#dd276189e5d12c4de6abf4ca01f9b35ee6709f20"
+  integrity sha512-k/qLtosCSbtOjNXd6RO6WsjJCanZdJ0TDeK9VToXOTwXz+daebq5yzND7Zb/1Df94NYf3YamWxCslTDLU8PnZg==
   dependencies:
-    "@ai-sdk/provider" "0.0.6"
-    "@ai-sdk/provider-utils" "0.0.9"
+    "@ai-sdk/provider" "0.0.10"
+    "@ai-sdk/provider-utils" "0.0.13"
     eventsource-parser "1.1.2"
     json-schema "0.4.0"
     jsondiffpatch "0.6.0"
     nanoid "3.3.6"
     secure-json-parse "2.7.0"
     solid-swr-store "0.10.7"
-    sswr "2.0.0"
+    sswr "2.1.0"
     swr "2.2.0"
     swr-store "0.10.6"
     swrv "1.0.4"
@@ -13326,6 +13326,13 @@ sswr@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/sswr/-/sswr-2.0.0.tgz#db5e1f7c44addb8316de8e7efe23b7ea2cba090d"
   integrity sha512-mV0kkeBHcjcb0M5NqKtKVg/uTIYNlIIniyDfSGrSfxpEdM9C365jK0z55pl9K0xAkNTJi2OAOVFQpgMPUk+V0w==
+  dependencies:
+    swrev "^4.0.0"
+
+sswr@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/sswr/-/sswr-2.1.0.tgz#1eb64cd647cc9e11f871e7f43554abd8c64e1103"
+  integrity sha512-Cqc355SYlTAaUt8iDPaC/4DPPXK925PePLMxyBKuWd5kKc5mwsG3nT9+Mq2tyguL5s7b4Jg+IRMpTRsNTAfpSQ==
   dependencies:
     swrev "^4.0.0"
 
